@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <title>Weather DashBoard</title>
+    </head>
+
+    <body>
+        <!--header-->
+        <header class="container-fluid bg-dark text-white">
+            <div class="row justify-content-center">
+              <h1>Weather Dashboard</h1>
+            </div>
+        </header>
+        <!--Choose a city to display weather-->
+        <div class="container-fluid">
+            <div class="row p-2">
+                    <div id="city-list" class="col-md-3 bg-light">
+                        <h4 class="mt-3">Search for a City:</h4>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="City Name" aria-label="city name">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" id="city-search" type="button"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    
+                    <div class="row cityList">
+                        <div class="col-12 city">
+                            <button class="btn btn-light">Atlanta</button>
+                        </div>
+                        <div class="col-12 city">
+                            <button class="btn btn-light">Memphis</button>
+                        </div>
+                        <div class="col-12 city">
+                            <button class="btn btn-light">Boston</button>
+                        </div>
+                        <div class="col-12 city">
+                            <button class="btn btn-light">Orlando</button>
+                        </div>
+                        <div class="col-12 city">
+                            <button class="btn btn-light">Miami</button>
+                        </div>
+                        <div class="col-12 city">
+                            <button class="btn btn-light">New York</button>
+                        </div>
+                        <div class="col-12 city">
+                            <button class="btn btn-light">San Diego</button>
+                        </div>
+                        <div class="col-12 city">
+                            <button class="btn btn-light">Portland</button>
+                        </div>
+                    </div>
+                </div>
+                
+            <!--selected city-->
+                <div class="col-9">
+                    <div class="card">
+                        <h1 id="city-name" class="display-4">City Name</h1>
+                        <div class="card-body">
+                            <p>Temperature:<b id="temperature"> 41 degress</b></p>
+                            <p>Humidity:<b id="humidity"> 41</b></p>
+                            <p>Wind Speed:<b id="wind-speed"> 4mph</b></p>
+                            <p>UV Index:<b id="UV Index"> 787</b></p>
+                        </div>
+                    </div>
+
+                <!--5 day forecast cards-->
+                <div><h5>5-day-forecast</h5></div>
+                    <div class="d-flex flex-row forecastlist">
+                        <div class="col-sm-2" >
+                            <div class="card forecast1">
+                                <div class="card-block">
+                                    <div class="card-title">
+                                        <h4 id="forecastday1">date</h4>
+                                        <p>Temp:<b id="tempDay1"> 23 degrees</b></p>
+                                        <p>Humidity:<b id="humidity1"> 43%</b></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-2" >
+                            <div class="card">
+                                <div class="card-block">
+                                    <div class="card-title">
+                                        <h4 id="forecastday2">date</h4>
+                                        <p>Temp:<b id="tempDay2"> 23 degrees</b></p>
+                                        <p>Humidity:<b id="humidity2"> 43%</b></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2" >
+                            <div class="card">
+                                <div class="card-block">
+                                    <div class="card-title">
+                                        <h4 id="forecastday1">date</h4>
+                                        <p>Temp:<b id="tempDay3"> 23 degrees</b></p>
+                                        <p>Humidity:<b id="humidity3"> 43%</b></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2 " >
+                            <div class="card">
+                                <div class="card-block">
+                                    <div class="card-title">
+                                        <h4 id="forecastday1">date</h4>
+                                        <p>Temp:<b id="tempDay4"> 23 degrees</b></p>
+                                        <p>Humidity:<b id="humidity4"> 43%</b></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2 ">
+                            <div class="card">
+                                <div class="card-block">
+                                    <div class="card-title">
+                                        <h4 id="forecastday1">date</h4>
+                                        <p>Temp:<b id="tempDay5"> 23 degrees</b></p>
+                                        <p>Humidity:<b id="humidity5"> 43%</b></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+           
+    </body>
+</html>
