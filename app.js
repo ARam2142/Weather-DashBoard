@@ -1,4 +1,65 @@
 
+$(document).ready(function() {
+
+///////////////////DECLARE VARIABLES WE MIGHT NEED
+
+//variable for city search button
+const searchButton = $('#city-search'); 
+const inputCity = $('#city-input');
+
+//variables for selected city display
+var cityName = $('#city-name'); 
+var currentDate = $('#date');
+var iconState = $('#iconmain');
+
+var temperatureEl = $('#temperature');
+var humidityEl = $('#humidity');
+var windSpeedEl = $('#wind-speed');
+var uvIndedEl = $('#uv-index');
+
+//variables for the 5 day forcast cards
+var tempForcast1 = $('#tempDay1');
+var humidityForcast1 = $('#humidity1');
+var tempForcast2 = $('#tempDay2');
+var humidityForcast12= $('#humidity2');
+var tempForcast3 = $('#tempDay3');
+var humidityForcast3 = $('#humidity3');
+var tempForcast4 = $('#tempDay4');
+var humidityForcast4 = $('#humidity4');
+var tempForcast5 = $('#tempDay5');
+var humidityForcast5 = $('#humidity5');
+
+//api key
+var apiKey = 'e7b524fee1d749595b3aa90b8bab1f55';
+
+var city = "";
+var searchedCities = [];
+var icon = $('<img></img>'); 
+//var currentDate = moment().format("MM/DD/YYYY");
+
+
+
+    //save se
+    function renderSearchHistory() {
+
+    }
+
+
+
+    //click button to enter city that will return forecast result
+    $('#city-search').on('click', function() {
+        
+    })
+
+
+
+
+
+
+});
+
+
+
 
 
 

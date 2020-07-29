@@ -23,7 +23,7 @@
                     <div id="city-list" class="col-md-3 bg-light">
                         <h4 class="mt-3">Search for a City:</h4>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="enter city" aria-label="city name">
+                            <input id="city-input" type="text" class="form-control" placeholder="enter city">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" id="city-search" type="button"><i class="fa fa-search"></i></button>
                             </div>
@@ -36,24 +36,6 @@
                         </div>
                         <div class="col-12 city">
                             <button class="btn btn-light">Memphis</button>
-                        </div>
-                        <div class="col-12 city">
-                            <button class="btn btn-light">Boston</button>
-                        </div>
-                        <div class="col-12 city">
-                            <button class="btn btn-light">Orlando</button>
-                        </div>
-                        <div class="col-12 city">
-                            <button class="btn btn-light">Miami</button>
-                        </div>
-                        <div class="col-12 city">
-                            <button class="btn btn-light">New York</button>
-                        </div>
-                        <div class="col-12 city">
-                            <button class="btn btn-light">San Diego</button>
-                        </div>
-                        <div class="col-12 city">
-                            <button class="btn btn-light">Portland</button>
                         </div>-->
                     </div>
                 </div>
@@ -64,13 +46,13 @@
                         <div id="topthree" class="d-flex flex-row  mb-3">
                             <div id="city-name" class="p-2 bd-highlight">City-Name</div>
                             <div id="date" class="p-2 bd-highlight">Date</div>
-                            <div id="icon" class="p-2 bd-highlight">icon</div>
+                            <div id="iconmain" class="p-2 bd-highlight">icon</div>
                           </div>
                             <div class="card-body">
                                 <p>Temperature:<b id="temperature"> 41 degress</b></p>
-                                <p>Humidity:<b id="humidity"> 41</b></p>
-                                <p>Wind Speed:<b id="wind-speed"> 4mph</b></p>
-                                <p>UV Index:<b id="UV Index"> 787</b></p>
+                                <p>Humidity:<b id="humidity">41</b></p>
+                                <p>Wind Speed:<b id="wind-speed">4mph</b></p>
+                                <p>UV Index:<b id="uv-index"> 787</b></p>
                             </div>
                         </div>
                 
@@ -83,7 +65,7 @@
                                 <div class="card-block">
                                     <div class="card-title">
                                         <h4 id="forecastday1">date</h4>
-                                        <img>icon
+                                        <img id="icon-1"></img>
                                         <p>Temp:<b id="tempDay1"> 23 degrees</b></p>
                                         <p>Humidity:<b id="humidity1"> 43%</b></p>
                                     </div>
@@ -96,7 +78,7 @@
                                 <div class="card-block">
                                     <div class="card-title">
                                         <h4 id="forecastday2">date</h4>
-                                        <img>icon
+                                        <img id="icon-2"></img>
                                         <p>Temp:<b id="tempDay2"> 23 degrees</b></p>
                                         <p>Humidity:<b id="humidity2"> 43%</b></p>
                                     </div>
@@ -108,7 +90,7 @@
                                 <div class="card-block">
                                     <div class="card-title">
                                         <h4 id="forecastday1">date</h4>
-                                        <img>icon
+                                        <img id="icon-3"></img>
                                         <p>Temp:<b id="tempDay3"> 23 degrees</b></p>
                                         <p>Humidity:<b id="humidity3"> 43%</b></p>
                                     </div>
@@ -120,7 +102,7 @@
                                 <div class="card-block">
                                     <div class="card-title">
                                         <h4 id="forecastday1">date</h4>
-                                        <img>icon
+                                        <img id="icon-4"></img>
                                         <p>Temp:<b id="tempDay4"> 23 degrees</b></p>
                                         <p>Humidity:<b id="humidity4"> 43%</b></p>
                                     </div>
@@ -132,9 +114,9 @@
                                 <div class="card-block">
                                     <div class="card-title">
                                         <h4 id="forecastday1">date</h4>
-                                        <img>icon
+                                        <img id="icon-5"></img>
                                         <p>Temp:<b id="tempDay5"> 23 degrees</b></p>
-                                        <p>Humidity:<span id="humidity5"> 43%</span></p>
+                                        <p>Humidity:<b id="humidity5"> 43%</b></p>
                                     </div>
                                 </div>
                             </div>
@@ -146,5 +128,6 @@
            
     </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <script src="app.js"></script>
 </html>
