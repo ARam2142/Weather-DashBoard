@@ -1,0 +1,40 @@
+html {
+    height: 100%;
+}
+
+#topthree {
+    margin-left: 14px;
+    font-size: 30px;
+}
+
+#forecast-title {
+    margin-left: 20px;
+}
+.card.forecast1{
+    background-color: rgb(64, 161, 190);
+
+}
+
+.card.forecast2{
+    background-color: rgb(64, 161, 190);
+
+}
+
+.card.forecast3{
+    background-color: rgb(64, 161, 190);
+
+}
+
+.card.forecast4{
+    background-color: rgb(64, 161, 190);
+
+}
+
+.card.forecast5{
+    background-color: rgb(64, 161, 190);
+
+}
+
+
+
+
