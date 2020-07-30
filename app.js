@@ -1,6 +1,5 @@
 
 $(document).ready(function() {
-
 ///////////////////DECLARE VARIABLES WE MIGHT NEED
 
 //variable for city search button
@@ -39,22 +38,54 @@ var icon = $('<img></img>');
 
 
 
-    //save se
+    //save the search history
     function renderSearchHistory() {
 
     }
 
-
-
     //click button to enter city that will return forecast result
-    $('#city-search').on('click', function() {
+    searchButton.on('click', function() {
+        city = inputCity.val();
+        if(!city.length){
+            return;
+        }
+        $.ajax({ 
+            url:'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey, 
+            method: 'GET'
+        })
+            .then(function(weatherData){
+                //Here we have initial weather data
+                console.log(weatherData)
+
+              
+
+                //Get uc index
+                /*$.ajax({ 
+                    url:'api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey, 
+                    method: 'GET' 
+                    })
+                    .then(function(uvIndex){
+                        //Here we have initial weather data
+                        //POpoulate entire DOM with weatherdata Var and new uvIndex
+                        //Calling 5 day here
+                    })
+                    .catch(function(err){
         
-    })
+                    })*/
+            })
+            .catch(function(err){
+
+            });
+
+
+            //DO 5 day fetch down here
 
 
 
 
 
+
+});
 
 });
 
