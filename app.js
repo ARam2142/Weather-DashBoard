@@ -30,10 +30,9 @@ var humidityForcast5 = $('#humidity5');
 
 //api key
 var apiKey = 'e7b524fee1d749595b3aa90b8bab1f55';
-
+var uvIndexKey = 'df1a34e888e628aee5465fd0821456ee'
 var city = "";
 var searchedCities = [];
-var icon = $('<img></img>'); 
 //var currentDate = moment().format("MM/DD/YYYY");
 
 
@@ -53,13 +52,26 @@ var icon = $('<img></img>');
             url:'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey, 
             method: 'GET'
         })
-            .then(function(weatherData){
+            .then(function(weatherdata){
                 //Here we have initial weather data
-                console.log(weatherData)
+                cityName.text(weatherdata.name);
+                iconState.text(weatherdata.weather[0].icon);
+                currentDate.text(moment().format('l'));
+                temperatureEl.text(weatherdata.main.temp);
+                humidityEl.text(weatherdata.main.humidity);
+                windSpeedEl.text(weatherdata.wind.speed);
+                console.log(weatherdata)
+                
+        //Get uv index
+        $.ajax( {
+            url: 'http://api.openweathermap.org/data/2.5/uvi/forecast?appid=' uvIndexKey + &lat={lat}&lon={lon}&cnt={cnt},
+            method: 'GET'
+        })
 
-              
+            .then(function(response) {
 
-                //Get uc index
+            })
+
                 /*$.ajax({ 
                     url:'api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey, 
                     method: 'GET' 
@@ -74,6 +86,11 @@ var icon = $('<img></img>');
                     })*/
             })
             .catch(function(err){
+
+
+
+
+
 
             });
 
