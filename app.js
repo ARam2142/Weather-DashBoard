@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
 ///////////////////DECLARE VARIABLES WE MIGHT NEED
 
@@ -14,13 +13,13 @@ var iconState = $('#iconmain');
 var temperatureEl = $('#temperature');
 var humidityEl = $('#humidity');
 var windSpeedEl = $('#wind-speed');
-var uvIndedEl = $('#uv-index');
+var uvIndexEl = $('#uv-index');
 
 //variables for the 5 day forcast cards
 var tempForcast1 = $('#tempDay1');
 var humidityForcast1 = $('#humidity1');
 var tempForcast2 = $('#tempDay2');
-var humidityForcast12= $('#humidity2');
+var humidityForcast2= $('#humidity2');
 var tempForcast3 = $('#tempDay3');
 var humidityForcast3 = $('#humidity3');
 var tempForcast4 = $('#tempDay4');
@@ -62,17 +61,18 @@ var searchedCities = [];
                 console.log(weatherdata)
                 
 
-
-                let lat = weatherdata.coords.latitude;
-                let lon = weatherdata.coords.longitude;
-                let queryURLUV = 'http://api.openweathermap.org/data/2.5/uvi?appid='+ apiKey + '&lat=' + lat + '&lon=' + lon;
+                let lat = weatherdata.coord.lat;
+                let lon = weatherdata.coord.lon;
+                let uvURL = 'http://api.openweathermap.org/data/2.5/uvi?appid='+ apiKey + '&lat=' + lat + '&lon=' + lon;
+                console.log(lat)
                 //Get uv index
                 $.ajax({ 
-                    url: queryURLUV,
+                    url: uvURL,
                     method: 'GET' 
                     })
                     .then(function(uvIndex){
-                        console.log(uvIndex)
+                        console.log(uvIndex);
+                        uvIndexEl.text(uvIndex.value);
                         //Here we have initial weather data
                         //POpoulate entire DOM with weatherdata Var and new uvIndex
                         //Calling 5 day here
