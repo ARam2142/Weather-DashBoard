@@ -9,7 +9,6 @@ const inputCity = $('#city-input');
 var cityName = $('#city-name'); 
 var currentDate = $('#date');
 var iconState = $('#iconmain');
-
 var temperatureEl = $('#temperature');
 var humidityEl = $('#humidity');
 var windSpeedEl = $('#wind-speed');
@@ -54,6 +53,8 @@ var searchedCities = [];
                 //Here we have initial weather data
                 cityName.text(weatherdata.name);
                 iconState.text(weatherdata.weather[0].icon);
+                var iconStateUrl = "http://openweathermap.org/img/w/" + iconState + ".png";
+                $('#iconmain').attr('src', iconStateUrl);
                 currentDate.text(moment().format('l'));
                 temperatureEl.text(((Math.round(weatherdata.main.temp - 273.15) * 9/5 +32)));
                 humidityEl.text(weatherdata.main.humidity);
@@ -72,7 +73,35 @@ var searchedCities = [];
                     })
                     .then(function(uvIndex){
                         console.log(uvIndex);
-                        uvIndexEl.text(uvIndex.value);
+                        uvIndexEl.text(parseInt(uvIndex.value));
+
+                        //0-2 is green
+                        if (uvIndex.value <= 2) {
+                            $(uvIndexEl).addClass("green");
+                        }
+                
+                        //3-5 is yellow
+                        else if (uvIndex.value <= 5) {
+                            $(uvIndexEl).addClass("yellow");
+                        }
+                        
+                        //6-7 is orange
+                        else if (uvIndex.value <= 7) {
+                            $(uvIndexEl).addClass("orange");
+                        } 
+                        
+                        //8-10 is red
+                        else if (uvIndex.value <= 10) {
+                            $(uvIndexEl).addClass("red");
+                        }
+
+                        //above 11 is violet
+                        else if (uvIndex.value >= 11) {
+                            $(uvIndexEl).addClass("violet");
+                        }
+
+
+
                         //Here we have initial weather data
                         //POpoulate entire DOM with weatherdata Var and new uvIndex
                         //Calling 5 day here
