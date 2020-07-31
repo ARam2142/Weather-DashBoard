@@ -62,16 +62,7 @@ var searchedCities = [];
                 windSpeedEl.text(weatherdata.wind.speed);
                 console.log(weatherdata)
                 
-        //Get uv index
-        $.ajax( {
-            url: 'http://api.openweathermap.org/data/2.5/uvi/forecast?appid=' uvIndexKey + &lat={lat}&lon={lon}&cnt={cnt},
-            method: 'GET'
-        })
-
-            .then(function(response) {
-
-            })
-
+                //Get uv index
                 /*$.ajax({ 
                     url:'api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey, 
                     method: 'GET' 
