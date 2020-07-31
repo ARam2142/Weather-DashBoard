@@ -30,7 +30,6 @@ var humidityForcast5 = $('#humidity5');
 
 //api key
 var apiKey = 'e7b524fee1d749595b3aa90b8bab1f55';
-var uvIndexKey = 'df1a34e888e628aee5465fd0821456ee'
 var city = "";
 var searchedCities = [];
 //var currentDate = moment().format("MM/DD/YYYY");
@@ -50,31 +49,42 @@ var searchedCities = [];
         }
         $.ajax({ 
             url:'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey, 
-            method: 'GET'
+            method: "GET"
         })
             .then(function(weatherdata){
                 //Here we have initial weather data
                 cityName.text(weatherdata.name);
                 iconState.text(weatherdata.weather[0].icon);
                 currentDate.text(moment().format('l'));
-                temperatureEl.text(weatherdata.main.temp);
+                temperatureEl.text(((Math.round(weatherdata.main.temp - 273.15) * 9/5 +32)));
                 humidityEl.text(weatherdata.main.humidity);
                 windSpeedEl.text(weatherdata.wind.speed);
                 console.log(weatherdata)
                 
+
+
+                let lat = weatherdata.coords.latitude;
+                let lon = weatherdata.coords.longitude;
+                let queryURLUV = 'http://api.openweathermap.org/data/2.5/uvi?appid='+ apiKey + '&lat=' + lat + '&lon=' + lon;
                 //Get uv index
-                /*$.ajax({ 
-                    url:'api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey, 
+                $.ajax({ 
+                    url: queryURLUV,
                     method: 'GET' 
                     })
                     .then(function(uvIndex){
+                        console.log(uvIndex)
                         //Here we have initial weather data
                         //POpoulate entire DOM with weatherdata Var and new uvIndex
                         //Calling 5 day here
-                    })
+                    })  
                     .catch(function(err){
         
-                    })*/
+                })
+
+
+
+
+
             })
             .catch(function(err){
 
@@ -87,11 +97,6 @@ var searchedCities = [];
 
 
             //DO 5 day fetch down here
-
-
-
-
-
 
 });
 
