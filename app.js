@@ -8,7 +8,7 @@ const inputCity = $('#city-input');
 //variables for selected city display
 var cityName = $('#city-name'); 
 var currentDate = $('#date');
-var iconState = $('#iconmain');
+var weatherIcon = $('#weather-icon');
 var temperatureEl = $('#temperature');
 var humidityEl = $('#humidity');
 var windSpeedEl = $('#wind-speed');
@@ -25,6 +25,16 @@ var tempForcast4 = $('#tempDay4');
 var humidityForcast4 = $('#humidity4');
 var tempForcast5 = $('#tempDay5');
 var humidityForcast5 = $('#humidity5');
+var forcastOneEl = $('#date1');
+var forcastTwoEl = $('#date2');
+var forcastThreeEl = $('#date3');
+var forcastFourEl = $('#date4');
+var forcastFiveEl = $('#date5');
+var iconDay1El = $('#icon-1');
+var iconDay2El = $('#icon-2');
+var iconDay3El = $('#icon-3');
+var iconDay4El = $('#icon-4');
+var iconDay5El = $('#icon-5');
 
 //api key
 var apiKey = 'e7b524fee1d749595b3aa90b8bab1f55';
@@ -32,15 +42,18 @@ var city = "";
 var searchedCities = [];
 //var currentDate = moment().format("MM/DD/YYYY");
 
-
+    
 
     //save the search history
     function renderSearchHistory() {
-
+        searchedCities = JSON.parse(localStorage.getItem('searchedCities'));
+        console.log(searchedCities);
     }
+    
 
     //click button to enter city that will return forecast result
     searchButton.on('click', function() {
+        renderSearchHistory();
         city = inputCity.val();
         if(!city.length){
             return;
@@ -52,11 +65,9 @@ var searchedCities = [];
             .then(function(weatherdata){
                 //Here we have initial weather data
                 cityName.text(weatherdata.name);
-                iconState.text(weatherdata.weather[0].icon);
-                var iconStateUrl = "http://openweathermap.org/img/w/" + iconState + ".png";
-                $('#iconmain').attr('src', iconStateUrl);
+                weatherIcon.text(weatherdata.weather[0].icon);
                 currentDate.text(moment().format('l'));
-                temperatureEl.text(((Math.round(weatherdata.main.temp - 273.15) * 9/5 +32)));
+                temperatureEl.text(((Math.round(weatherdata.main.temp - 273.15) * 9/5 + 32)));
                 humidityEl.text(weatherdata.main.humidity);
                 windSpeedEl.text(weatherdata.wind.speed);
                 console.log(weatherdata)
@@ -64,8 +75,45 @@ var searchedCities = [];
 
                 let lat = weatherdata.coord.lat;
                 let lon = weatherdata.coord.lon;
-                let uvURL = 'http://api.openweathermap.org/data/2.5/uvi?appid='+ apiKey + '&lat=' + lat + '&lon=' + lon;
-                console.log(lat)
+                //DO 5 day fetch down here
+                fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&appid=' + apiKey)
+                .then(response => response.json()) 
+                .then(fiveDayForcast => {
+                    console.log(fiveDayForcast);
+                    //var moment = moment().format("MM/DD/YYYY");
+                    //forcast day 1
+                    forcastOneEl.text(moment().add(1, 'd').format('MM-DD-YYYY'));
+                    tempForcast1.text(Math.round(fiveDayForcast.daily[0].temp.day - 273.15) * 9/5 + 32);
+                    humidityForcast1.text(fiveDayForcast.daily[0].humidity);
+
+                    //forcast day 2
+                    forcastTwoEl.text(moment().add(2, 'd').format('MM-DD-YYYY'));
+                    tempForcast2.text(Math.round(fiveDayForcast.daily[1].temp.day - 273.15) * 9/5 + 32);
+                    humidityForcast2.text(fiveDayForcast.daily[1].humidity);
+
+                    //forcast day 3
+                    forcastThreeEl.text(moment().add(3, 'd').format('MM-DD-YYYY'));
+                    tempForcast3.text(Math.round(fiveDayForcast.daily[2].temp.day - 273.15) * 9/5 + 32);
+                    humidityForcast3.text(fiveDayForcast.daily[2].humidity);
+
+                    //forcast day 4
+                    forcastFourEl.text(moment().add(4, 'd').format('MM-DD-YYYY'));
+                    tempForcast4.text(Math.round(fiveDayForcast.daily[3].temp.day - 273.15) * 9/5 + 32);
+                    humidityForcast4.text(fiveDayForcast.daily[3].humidity);
+
+                    //forcast day 5
+                    forcastFiveEl.text(moment().add(5, 'd').format('MM-DD-YYYY'));
+                    tempForcast5.text(Math.round(fiveDayForcast.daily[4].temp.day - 273.15) * 9/5 + 32);
+                    humidityForcast5.text(fiveDayForcast.daily[4].humidity);
+                
+                })
+
+                //.catch(function(error) {
+
+                //});
+
+                
+                let uvURL = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&appid=' + apiKey;
                 //Get uv index
                 $.ajax({ 
                     url: uvURL,
@@ -73,59 +121,56 @@ var searchedCities = [];
                     })
                     .then(function(uvIndex){
                         console.log(uvIndex);
-                        uvIndexEl.text(parseInt(uvIndex.value));
+                        uvIndexEl.text(parseInt(uvIndex.current.uvi));
 
                         //0-2 is green
-                        if (uvIndex.value <= 2) {
+                        if (uvIndex.current.uvi <= 2) {
                             $(uvIndexEl).addClass("green");
                         }
                 
                         //3-5 is yellow
-                        else if (uvIndex.value <= 5) {
+                        else if (uvIndex.current.uvi <= 5) {
                             $(uvIndexEl).addClass("yellow");
                         }
                         
                         //6-7 is orange
-                        else if (uvIndex.value <= 7) {
+                        else if (uvIndex.current.uvi <= 7) {
                             $(uvIndexEl).addClass("orange");
                         } 
                         
                         //8-10 is red
-                        else if (uvIndex.value <= 10) {
+                        else if (uvIndex.current.uvi <= 10) {
                             $(uvIndexEl).addClass("red");
                         }
 
                         //above 11 is violet
-                        else if (uvIndex.value >= 11) {
+                        else if (uvIndex.current.uvi >= 11) {
                             $(uvIndexEl).addClass("violet");
                         }
-
 
 
                         //Here we have initial weather data
                         //POpoulate entire DOM with weatherdata Var and new uvIndex
                         //Calling 5 day here
+                        
+
                     })  
                     .catch(function(err){
-        
-                })
-
-
-
+    
+                    })
 
 
             })
             .catch(function(err){
 
-
-
-
-
+     
 
             });
 
-
-            //DO 5 day fetch down here
+            
+           
+        
+            
 
 });
 
