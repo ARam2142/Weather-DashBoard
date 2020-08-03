@@ -8,7 +8,7 @@ const inputCity = $('#city-input');
 //variables for selected city display
 var cityName = $('#city-name'); 
 var currentDate = $('#date');
-var weatherIcon = $('#weather-icon');
+var weatherIconEl = $('#weather-icon');
 var temperatureEl = $('#temperature');
 var humidityEl = $('#humidity');
 var windSpeedEl = $('#wind-speed');
@@ -35,25 +35,60 @@ var iconDay2El = $('#icon-2');
 var iconDay3El = $('#icon-3');
 var iconDay4El = $('#icon-4');
 var iconDay5El = $('#icon-5');
+var cityRows = $('div.cityRows'); console.log(cityRows)
 
 //api key
 var apiKey = 'e7b524fee1d749595b3aa90b8bab1f55';
 var city = "";
 var searchedCities = [];
-//var currentDate = moment().format("MM/DD/YYYY");
+
+    function loadSearchHistory() {
+        //get saved searchedcities from local storage
+        let savedHistory = JSON.parse(localStorage.getItem("searchedcities"));
+        //if items were retrieved from local storage, update the searchedCities array to it
+        if (!searchedCities) {
+            savedHistory = searchedcities;
+        }
+        console.log(searchedCities)
+    }   
+    loadSearchHistory();
+
+
+
+    //save search results
+    
+    function saveSearchResults() {
+        searchedCities.push(city);
+        localStorage.setItem('searchedCities', JSON.stringify(searchedCities));
+    }
+    saveSearchResults();
 
     
+    function displaySearchHistory() {
+        cityRows.empty();
+        searchedCities.forEach(function () {
+            let divCityEl = $("<div></div>").addClass('col-12 city');
+            //console.log(divCityEl);
 
-    //save the search history
-    function renderSearchHistory() {
-        searchedCities = JSON.parse(localStorage.getItem('searchedCities'));
-        console.log(searchedCities);
+            let buttonCityEl = $('<button></button>').addClass('btn btn-light');
+            buttonCityEl.text(city);
+            //console.log(buttonCityEl);
+
+            divCityEl.append(buttonCityEl);
+            //console.log(divCityEl.append(buttonCityEl));
+
+            cityRows.append(divCityEl);
+            //console.log( cityRows.append(divCityEl));
+  
+        });
+        
     }
     
 
     //click button to enter city that will return forecast result
-    searchButton.on('click', function() {
-        renderSearchHistory();
+    searchButton.on('click', function(e) {
+        displaySearchHistory();
+        //e.preventDefault();
         city = inputCity.val();
         if(!city.length){
             return;
@@ -65,7 +100,8 @@ var searchedCities = [];
             .then(function(weatherdata){
                 //Here we have initial weather data
                 cityName.text(weatherdata.name);
-                weatherIcon.text(weatherdata.weather[0].icon);
+                let apiIcon = weatherdata.weather[0].icon;
+                weatherIconEl.attr('src', `https://openweathermap.org/img/wn/${apiIcon}'@2x.png`)
                 currentDate.text(moment().format('l'));
                 temperatureEl.text(((Math.round(weatherdata.main.temp - 273.15) * 9/5 + 32)));
                 humidityEl.text(weatherdata.main.humidity);
@@ -80,9 +116,11 @@ var searchedCities = [];
                 .then(response => response.json()) 
                 .then(fiveDayForcast => {
                     console.log(fiveDayForcast);
-                    //var moment = moment().format("MM/DD/YYYY");
+
                     //forcast day 1
                     forcastOneEl.text(moment().add(1, 'd').format('MM-DD-YYYY'));
+                    let weatherIcon1 = fiveDayForcast.daily[0].weather[0].icon
+                    iconDay1El.attr('src', `https://openweathermap.org/img/wn/${weatherIcon1}'@2x.png`);
                     tempForcast1.text(Math.round(fiveDayForcast.daily[0].temp.day - 273.15) * 9/5 + 32);
                     humidityForcast1.text(fiveDayForcast.daily[0].humidity);
 
@@ -121,43 +159,41 @@ var searchedCities = [];
                     })
                     .then(function(uvIndex){
                         console.log(uvIndex);
-                        uvIndexEl.text(parseInt(uvIndex.current.uvi));
-
+                        uvIndexEl.text((uvIndex.current.uvi));
+                            
                         //0-2 is green
-                        if (uvIndex.current.uvi <= 2) {
+                        if (uvIndex.current.uvi < 2.9) {
                             $(uvIndexEl).addClass("green");
                         }
                 
                         //3-5 is yellow
-                        else if (uvIndex.current.uvi <= 5) {
+                        else if (uvIndex.current.uvi >= 3 && uvIndex.current.uvi < 6) {
                             $(uvIndexEl).addClass("yellow");
                         }
                         
                         //6-7 is orange
-                        else if (uvIndex.current.uvi <= 7) {
+                        else if (uvIndex.current.uvi >= 6 && uvIndex.current.uvi < 8) {
                             $(uvIndexEl).addClass("orange");
                         } 
                         
                         //8-10 is red
-                        else if (uvIndex.current.uvi <= 10) {
+                        else if (uvIndex.current.uvi >= 8 && uvIndex.current.uvi < 11) {
                             $(uvIndexEl).addClass("red");
                         }
 
                         //above 11 is violet
-                        else if (uvIndex.current.uvi >= 11) {
+                        else  {
                             $(uvIndexEl).addClass("violet");
                         }
-
 
                         //Here we have initial weather data
                         //POpoulate entire DOM with weatherdata Var and new uvIndex
                         //Calling 5 day here
                         
-
                     })  
-                    .catch(function(err){
+                    //.catch(function(err){
     
-                    })
+                    //})
 
 
             })
@@ -167,26 +203,9 @@ var searchedCities = [];
 
             });
 
-            
-           
-        
-            
-
 });
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -11,27 +11,27 @@ html {
     margin-left: 20px;
 }
 .card.forecast1{
-    background-color: rgb(64, 161, 190);
+    background-color: rgb(26, 79, 194);
 
 }
 
 .card.forecast2{
-    background-color: rgb(64, 161, 190);
+    background-color: rgb(26, 79, 194);
 
 }
 
 .card.forecast3{
-    background-color: rgb(64, 161, 190);
+    background-color: rgb(26, 79, 194);
 
 }
 
 .card.forecast4{
-    background-color: rgb(64, 161, 190);
+    background-color: rgb(26, 79, 194);
 
 }
 
 .card.forecast5{
-    background-color: rgb(64, 161, 190);
+    background-color: rgb(26, 79, 194);
 
 }
 
@@ -54,7 +54,26 @@ html {
 .violet {
     background-color: violet;
 }
-    
-    
+   
+div.bg.primary-1 {
+    margin: 10px;
+}
+
+div.bg.primary-2 {
+    margin: 10px;
+}
+
+div.bg.primary-3 {
+    margin: 10px;
+}
+
+div.bg.primary-4 {
+    margin: 10px;
+}
+
+div.bg.primary-5 {
+    margin: 10px;
+}
+
 
 
