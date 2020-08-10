@@ -32,7 +32,7 @@ $(document).ready(function() {
         }
         
         //save search results to local storage
-        function saveSearchResults() {
+        function saveSearchResults(event) {
             //worked on with tutor
             const prevSearchIndex = searchedCities.indexOf(city);//returns first element of searchedcities array
             const notSearched = prevSearchIndex === -1; //prevSearchIndex is strictly equal to -1
@@ -84,35 +84,35 @@ $(document).ready(function() {
                 }
                 
                 //forcast day 1
-                $('.tempDay1').text(moment().add(1, 'd').format('MM-DD-YYYY'));
+                $('.date1').text(moment().add(1, 'd').format('MM-DD-YYYY'));
                 let weatherIcon1 = fiveDayForcast.daily[0].weather[0].icon;
                 $('.icon-1').attr('src', 'https://openweathermap.org/img/wn/' + weatherIcon1 + '.png');
                 $('.tempDay1').text(Math.round(fiveDayForcast.daily[0].temp.day - 273.15) * 9/5 + 32);
                 $('.humidity1').text(fiveDayForcast.daily[0].humidity);
                 
                 //forcast day 2
-                $('.tempDay2').text(moment().add(2, 'd').format('MM-DD-YYYY'));
+                $('.date2').text(moment().add(2, 'd').format('MM-DD-YYYY'));
                 let weatherIcon2 = fiveDayForcast.daily[1].weather[0].icon
                 $('.icon-2').attr('src', 'https://openweathermap.org/img/wn/' + weatherIcon2 + '.png');
                 $('.tempDay2').text(Math.round(fiveDayForcast.daily[1].temp.day - 273.15) * 9/5 + 32);
                 $('.humidity2').text(fiveDayForcast.daily[1].humidity);
                 
                 //forcast day 3
-                $('.tempDay3').text(moment().add(3, 'd').format('MM-DD-YYYY'));
+                $('.date3').text(moment().add(3, 'd').format('MM-DD-YYYY'));
                 let weatherIcon3 = fiveDayForcast.daily[2].weather[0].icon
                 $('.icon-3').attr('src', 'https://openweathermap.org/img/wn/' + weatherIcon3 + '.png');
                 $('.tempDay3').text(Math.round(fiveDayForcast.daily[2].temp.day - 273.15) * 9/5 + 32);
                 $('.humidity3').text(fiveDayForcast.daily[2].humidity);
                 
                 //forcast day 4
-                $('.tempDay4').text(moment().add(4, 'd').format('MM-DD-YYYY'));
+                $('.date4').text(moment().add(4, 'd').format('MM-DD-YYYY'));
                 let weatherIcon4 = fiveDayForcast.daily[3].weather[0].icon
                 $('.icon-4').attr('src', 'https://openweathermap.org/img/wn/' + weatherIcon4 + '.png');
                 $('.tempDay4').text(Math.round(fiveDayForcast.daily[3].temp.day - 273.15) * 9/5 + 32);
                 $('.humidity4').text(fiveDayForcast.daily[3].humidity);
                 
                 //forcast day 5
-                $('.tempDay5').text(moment().add(5, 'd').format('MM-DD-YYYY'));
+                $('.date5').text(moment().add(5, 'd').format('MM-DD-YYYY'));
                 let weatherIcon5 = fiveDayForcast.daily[4].weather[0].icon
                 $('.icon-5').attr('src', 'https://openweathermap.org/img/wn/' + weatherIcon5 + '.png');
                 $('.tempDay5').text(Math.round(fiveDayForcast.daily[4].temp.day - 273.15) * 9/5 + 32);
@@ -176,44 +176,42 @@ $(document).ready(function() {
                 }
 
                 //forcast day 1
-                $('.tempDay1').text(moment().add(1, 'd').format('MM-DD-YYYY'));
+                $('.date1').text(moment().add(1, 'd').format('MM-DD-YYYY'));
                 let weatherIcon1 = fiveDayForcast.daily[0].weather[0].icon;
                 $('.icon-1').attr('src', 'https://openweathermap.org/img/wn/' + weatherIcon1 + '.png');
                 $('.tempDay1').text(Math.round(fiveDayForcast.daily[0].temp.day - 273.15) * 9/5 + 32);
                 $('.humidity1').text(fiveDayForcast.daily[0].humidity);
                 
                 //forcast day 2
-                $('.tempDay2').text(moment().add(2, 'd').format('MM-DD-YYYY'));
+                $('.date2').text(moment().add(2, 'd').format('MM-DD-YYYY'));
                 let weatherIcon2 = fiveDayForcast.daily[1].weather[0].icon
                 $('.icon-2').attr('src', 'https://openweathermap.org/img/wn/' + weatherIcon2 + '.png');
                 $('.tempDay2').text(Math.round(fiveDayForcast.daily[1].temp.day - 273.15) * 9/5 + 32);
                 $('.humidity2').text(fiveDayForcast.daily[1].humidity);
                 
                 //forcast day 3
-                $('.tempDay3').text(moment().add(3, 'd').format('MM-DD-YYYY'));
+                $('.date3').text(moment().add(3, 'd').format('MM-DD-YYYY'));
                 let weatherIcon3 = fiveDayForcast.daily[2].weather[0].icon
                 $('.icon-3').attr('src', 'https://openweathermap.org/img/wn/' + weatherIcon3 + '.png');
                 $('.tempDay3').text(Math.round(fiveDayForcast.daily[2].temp.day - 273.15) * 9/5 + 32);
                 $('.humidity3').text(fiveDayForcast.daily[2].humidity);
                 
                 //forcast day 4
-                $('.tempDay4').text(moment().add(4, 'd').format('MM-DD-YYYY'));
+                $('.date4').text(moment().add(4, 'd').format('MM-DD-YYYY'));
                 let weatherIcon4 = fiveDayForcast.daily[3].weather[0].icon
                 $('.icon-4').attr('src', 'https://openweathermap.org/img/wn/' + weatherIcon4 + '.png');
                 $('.tempDay4').text(Math.round(fiveDayForcast.daily[3].temp.day - 273.15) * 9/5 + 32);
                 $('.humidity4').text(fiveDayForcast.daily[3].humidity);
                 
                 //forcast day 5
-                $('.tempDay5').text(moment().add(5, 'd').format('MM-DD-YYYY'));
+                $('.date5').text(moment().add(5, 'd').format('MM-DD-YYYY'));
                 let weatherIcon5 = fiveDayForcast.daily[4].weather[0].icon
                 $('.icon-5').attr('src', 'https://openweathermap.org/img/wn/' + weatherIcon5 + '.png');
                 $('.tempDay5').text(Math.round(fiveDayForcast.daily[4].temp.day - 273.15) * 9/5 + 32);
                 $('.humidity5').text(fiveDayForcast.daily[4].humidity);
                 
-                
             });
         })
-
     }
 
     //click button to see past searches
@@ -222,4 +220,5 @@ $(document).ready(function() {
         apiReload();
 
     })
+
 });
