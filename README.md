@@ -14,7 +14,7 @@ This is a simple weather application that the user will be able to use at anytim
 _________________________________________
 OutCome:
 
-This was a very fun app to make. However it did come with alot of roadblocks. This is just part of the learning experience. I have put alot of time and effort into making this application come to life. I am proud of the work i have done. Hopefully i will be able to do more work on it in the future as i progress in my coding journey.
+This was a very fun app to make. However it did come with alot of roadblocks. This is just part of the learning experience. I have put alot of time and effort into making this application come to life. I am proud of the work I have done. Hopefully I will be able to do more work on it in the future as I progress in my coding journey.
 
 Screenshots:
 

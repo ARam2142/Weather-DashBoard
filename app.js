@@ -1,12 +1,12 @@
 $(document).ready(function() {
     const searchButton = $('#city-search'); 
     const inputCity = $('#city-input');
-    var uvIndexEl = $('#uv-index');
-    var cityRows = $('div.cityRows');
-    var apiKey = 'e7b524fee1d749595b3aa90b8bab1f55';
-    var city = "";
-    var savedData = localStorage.getItem("searchedCities");
-    var searchedCities;
+    let uvIndexEl = $('#uv-index');
+    let cityRows = $('div.cityRows');
+    let apiKey = 'e7b524fee1d749595b3aa90b8bab1f55';
+    let city = "";
+    let savedData = localStorage.getItem("searchedCities");
+    let searchedCities;
     let lastCitySearched;
     
     //worked on with tutor
