@@ -16,6 +16,20 @@ _________________________________________
 
 This was a very fun app to make. However it did come with alot of roadblocks. This is just part of the learning experience. I have put alot of time and effort into making this application come to life. I am proud of the work I have done. Hopefully I will be able to do more work on it in the future as I progress in my coding journey.
 
+# Technologies used:
+
+HTML
+
+CSS 
+
+Bootstrap
+
+Javascript
+
+JQuery
+
+OpenWeather API
+
 # Screenshots:
 
 ![Screen Shot 2020-08-09 at 10 07 36 PM](https://user-images.githubusercontent.com/65634748/89747921-e5924100-da8e-11ea-9545-96e3388f073f.png)
