@@ -1,9 +1,15 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.google.com/specimen/Inconsolata?query==incons&sidebar.open=true&selection.family=Inconsolata');
 
-.container-fluid {
-    background-color: tan;
+body {
+    background-color: lightgray;
+    font-family: inconsolata;
 }
+
+/*.container-fluid {
+    background-color: tan;
+}*/
+
 
 #topthree {
     margin-left: 14px;
