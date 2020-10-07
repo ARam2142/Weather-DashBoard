@@ -1,7 +1,5 @@
-/*html {
-    height: 100%;
-}*/
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 .container-fluid {
     background-color: tan;
@@ -32,19 +30,17 @@ div.currentforcast {
 
 .card.forecast3{
     background-color: rgb(26, 79, 194);
-
 }
 
 .card.forecast4{
     background-color: rgb(26, 79, 194);
-
 }
 
 .card.forecast5{
     background-color: rgb(26, 79, 194);
-
 }
 
+/*COLORS of UV*/
 .green {
     background-color: green;  
 }
@@ -85,6 +81,7 @@ div.bg.primary-5 {
     margin: 10px;
 }
 
+/*FOOTER*/
 footer {
     display:block;
     width: 50%;
@@ -92,4 +89,7 @@ footer {
     text-align: center;
 }
 
+.github a:hover {
+    color: whitesmoke;
+}
 
