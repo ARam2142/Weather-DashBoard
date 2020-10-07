@@ -2,8 +2,8 @@
 @import url('https://fonts.google.com/specimen/Inconsolata?query==incons&sidebar.open=true&selection.family=Inconsolata');
 
 body {
-    background-color: lightgray;
-    font-family: inconsolata;
+    background-color: rgba(82, 133, 163, 0.712);
+    font-family: inconsolata, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /*.container-fluid {
