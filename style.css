@@ -22,6 +22,7 @@ body {
 
 div.currentforcast {
     background-color: rgba(30, 69, 114, 0.336);
+    
 }
 
 .card.forecast1{
@@ -93,9 +94,5 @@ footer {
     width: 50%;
     margin: 0 auto;
     text-align: center;
-}
-
-.github a:hover {
-    color: whitesmoke;
 }
 
