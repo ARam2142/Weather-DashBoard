@@ -74,6 +74,7 @@ $(document).ready(function() {
             }).then(function(fiveDayForcast) {
                 uvIndexEl.text((fiveDayForcast.current.uvi));
                 
+                //set UV class based on condition
                 if (fiveDayForcast.current.uvi < 2.9) {
                     $(uvIndexEl).addClass("green");
                 } else if (fiveDayForcast.current.uvi >= 3 && fiveDayForcast.current.uvi < 6) {
