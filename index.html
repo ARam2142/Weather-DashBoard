@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <link rel="stylesheet" href="style.css">
-        <title>Weather DashBoard</title>
-    </head>
 
-    <body>
-        <!--header-->
-        <header class="container-fluid bg-dark text-white">
-            <div class="row justify-content-center">
-              <h1>Weather Dashboard</h1>
-            </div>
-        </header>
-        <!--Choose a city to display weather-->
-        <div class="container-fluid">
-            <div class="row p-2">
-                    <div id="city-list" class="col-md-3 bg-light">
-                        <h4 class="mt-3">Search for a City:</h4>
-                        <div class="input-group mb-3">
-                            <input id="city-input" type="text" class="form-control" placeholder="enter city">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" id="city-search" type="button"><i class="fa fa-search"></i></button>
-                            </div>
-                        </div>
-                    
-                    <!--generate list of city history-->
-                    <div class="row cityRows">
-                        <!--<div class="col-12 city">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!--<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Weather DashBoard</title>
+</head>
+
+<body>
+    <!--header-->
+    <header class="container-fluid bg-dark text-white">
+        <div class="row justify-content-center">
+            <h1>Weather Dashboard</h1>
+        </div>
+    </header>
+    <!--Choose a city to display weather-->
+    <div class="container-fluid">
+        <div class="row p-2">
+            <div id="city-list" class="col-md-3 bg-light">
+                <h4 class="mt-3">Search for a City:</h4>
+                <div class="input-group mb-3">
+                    <input id="city-input" type="text" class="form-control" placeholder="enter city">
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-primary" id="city-search"><i
+                                class="fas fa-search"></i></button>
+                    </div>
+                </div>
+
+                <!--generate list of city history-->
+                <div class="row cityRows">
+                    <!--<div class="col-12 city">
                             <button class="btn btn-light">Atlanta</button>
                         </div>
                         <div class="col-12 city">
@@ -40,88 +45,97 @@
                         <div class="col-12 city">
                             <button class="btn btn-light">Boston</button>
                         </div>-->
+                </div>
+            </div>
+
+            <!--selected city-->
+            <div class="col-9">
+                <div class="currentforcast card border border-primary">
+                    <div id="topthree" class="d-flex flex-row  mb-3">
+                        <div id="city-name" class="p-2 bd-highlight">City</div>
+                        <div id="date" class="p-2 bd-highlight">Date</div>
+                        <div class="p-2 bd-highlight"><img src="https://openweathermap.org/img/wn/01d@2x.png"
+                                class="weather-icon" alt="icon"></div>
+                    </div>
+                    <div class="card-body">
+                        <p>Temperature: <b class="temperature"></b><b>° F</b></p>
+                        <p>Humidity: <b class="humidity"></b><b>%</b></p>
+                        <p>Wind Speed: <b class="wind-speed"></b><b>MPH</b></p>
+                        <p>UV Index: <b class="badge badge-primary text-wrap" style="width: 3rem;" id="uv-index"></b>
+                        </p>
                     </div>
                 </div>
-                
-            <!--selected city-->
-                <div class="col-9">
-                    <div class="card border border-primary">    
-                        <div id="topthree" class="d-flex flex-row  mb-3">
-                            <div id="city-name" class="p-2 bd-highlight">City</div>
-                            <div id="date" class="p-2 bd-highlight">Date</div>
-                            <div  class="p-2 bd-highlight"><img src="https://openweathermap.org/img/wn/01d@2x.png" class="weather-icon" alt="icon"></div>
-                          </div>
-                            <div class="card-body">
-                                <p>Temperature: <b class="temperature"></b><b>° F</b></p>
-                                <p>Humidity: <b class="humidity"></b><b>%</b></p>
-                                <p>Wind Speed: <b class="wind-speed"></b><b>MPH</b></p>
-                                <p>UV Index: <b class="badge badge-primary text-wrap" style="width: 3rem;" id="uv-index"></b></p>
-                            </div>
-                        </div>
-                
+
 
                 <!--5 day forecast cards-->
-                <div><h5 id="forecast-title">5-day-forecast</h5></div>
+                <br>
+                <div>
+                    <h5 id="forecast-title">5-day-forecast</h5>
+                </div>
 
-                    <div class="d-flex flex-row forecastlist">
-                        <div class="bg primary-1" >
-                            <div class="card forecast1">
-                                <div class="card-block">
-                                    <div class="card-title text-light">
-                                        <h4 class="date1">date</h4>
-                                        <img src="https://openweathermap.org/img/wn/01d@2x.png" class="icon-1" alt="icon here">
-                                        <p>Temp:<b class="tempDay1"></b><b>° F</b></p>
-                                        <p>Humidity:<b class="humidity1"></b><b>%</b></p>
-                                    </div>
+                <div class="d-flex flex-row forecastlist">
+                    <div class="bg primary-1">
+                        <div class="card forecast1">
+                            <div class="card-block">
+                                <div class="card-title text-light">
+                                    <h4 class="date1">date</h4>
+                                    <img src="https://openweathermap.org/img/wn/01d@2x.png" class="icon-1"
+                                        alt="icon here">
+                                    <p>Temp:<b class="tempDay1"></b><b>° F</b></p>
+                                    <p>Humidity:<b class="humidity1"></b><b>%</b></p>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="bg primary-2">
-                            <div class="card forecast2">
-                                <div class="card-block">
-                                    <div class="card-title text-light">
-                                        <h4 class="date2">date</h4>
-                                        <img class="icon-2" src="https://openweathermap.org/img/wn/01d@2x.png" alt="icon here">
-                                        <p>Temp:<b class="tempDay2"></b><b>° F</b></p>
-                                        <p>Humidity:<b class="humidity2"></b><b>%</b></p>
-                                    </div>
+                    </div>
+
+                    <div class="bg primary-2">
+                        <div class="card forecast2">
+                            <div class="card-block">
+                                <div class="card-title text-light">
+                                    <h4 class="date2">date</h4>
+                                    <img class="icon-2" src="https://openweathermap.org/img/wn/01d@2x.png"
+                                        alt="icon here">
+                                    <p>Temp:<b class="tempDay2"></b><b>° F</b></p>
+                                    <p>Humidity:<b class="humidity2"></b><b>%</b></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="bg primary-3" >
-                            <div class="card forecast3">
-                                <div class="card-block">
-                                    <div class="card-title text-light">
-                                        <h4 class="date3">date</h4>
-                                        <img class="icon-3" src="https://openweathermap.org/img/wn/01d@2x.png" alt="icon here">
-                                        <p>Temp:<b class="tempDay3"></b><b>° F</b></p>
-                                        <p>Humidity:<b class="humidity3"></b><b>%</b></p>
-                                    </div>
+                    </div>
+                    <div class="bg primary-3">
+                        <div class="card forecast3">
+                            <div class="card-block">
+                                <div class="card-title text-light">
+                                    <h4 class="date3">date</h4>
+                                    <img class="icon-3" src="https://openweathermap.org/img/wn/01d@2x.png"
+                                        alt="icon here">
+                                    <p>Temp:<b class="tempDay3"></b><b>° F</b></p>
+                                    <p>Humidity:<b class="humidity3"></b><b>%</b></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="bg primary-4" >
-                            <div class="card forecast4">
-                                <div class="card-block text-light">
-                                    <div class="card-title">
-                                        <h4 class="date4">date</h4>
-                                        <img class="icon-4" src="https://openweathermap.org/img/wn/01d@2x.png" alt="icon here">
-                                        <p>Temp:<b class="tempDay4"></b><b>° F</b></p>
-                                        <p>Humidity:<b class="humidity4"></b><b>%</b></p>
-                                    </div>
+                    </div>
+                    <div class="bg primary-4">
+                        <div class="card forecast4">
+                            <div class="card-block text-light">
+                                <div class="card-title">
+                                    <h4 class="date4">date</h4>
+                                    <img class="icon-4" src="https://openweathermap.org/img/wn/01d@2x.png"
+                                        alt="icon here">
+                                    <p>Temp:<b class="tempDay4"></b><b>° F</b></p>
+                                    <p>Humidity:<b class="humidity4"></b><b>%</b></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="bg primary-5">
-                            <div class="card forecast5">
-                                <div class="card-block">
-                                    <div class="card-title text-light">
-                                        <h4 class="date5">date</h4>
-                                        <img class="icon-5" src="https://openweathermap.org/img/wn/01d@2x.png" alt="icon here"></img>
-                                        <p>Temp:<b class="tempDay5"></b><b>° F</b></p>
-                                        <p>Humidity:<b class="humidity5"></b><b>%</b></p>
-                                    </div>
+                    </div>
+                    <div class="bg primary-5">
+                        <div class="card forecast5">
+                            <div class="card-block">
+                                <div class="card-title text-light">
+                                    <h4 class="date5">date</h4>
+                                    <img class="icon-5" src="https://openweathermap.org/img/wn/01d@2x.png"
+                                        alt="icon here"></img>
+                                    <p>Temp:<b class="tempDay5"></b><b>° F</b></p>
+                                    <p>Humidity:<b class="humidity5"></b><b>%</b></p>
                                 </div>
                             </div>
                         </div>
@@ -129,9 +143,24 @@
                 </div>
             </div>
         </div>
-           
-    </body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
-    <script src="app.js"></script>
+    </div>
+    <!-- Footer -->
+    <footer class="container-fluid bg-dark text-white">
+        <div class="justify-content-center">Weather-DashBoard © 2020</div>
+        <div class="social justify-content-center">
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="far fa-envelope"></i></a>
+            <a href="#"><i class="fas fa-mobile-alt"></i></a>
+        </div>
+        <div class="github">
+            <a target="_blank" href="https://github.com/ARam2142">Andres Ramirez</a>
+        </div>
+    </footer>
+    <!-- Footer -->
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+<script src="app.js"></script>
+
 </html>

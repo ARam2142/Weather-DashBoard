@@ -1,5 +1,10 @@
-html {
+/*html {
     height: 100%;
+}*/
+
+
+.container-fluid {
+    background-color: tan;
 }
 
 #topthree {
@@ -10,6 +15,11 @@ html {
 #forecast-title {
     margin-left: 20px;
 }
+
+div.currentforcast {
+    background-color: rgba(30, 69, 114, 0.336);
+}
+
 .card.forecast1{
     background-color: rgb(26, 79, 194);
 
@@ -75,5 +85,11 @@ div.bg.primary-5 {
     margin: 10px;
 }
 
+footer {
+    display:block;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
 
 
