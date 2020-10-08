@@ -1,15 +1,27 @@
-
 @import url('https://fonts.google.com/specimen/Inconsolata?query==incons&sidebar.open=true&selection.family=Inconsolata');
+
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+html, body {
+    height: 100%;
+}
 
 body {
     background-color: rgba(82, 133, 163, 0.712);
     font-family: inconsolata, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
-/*.container-fluid {
-    background-color: tan;
-}*/
 
+.container-fluid {
+    padding: 20px;
+    flex: 1 0 auto;
+}
 
 #topthree {
     margin-left: 14px;
@@ -67,32 +79,33 @@ div.currentforcast {
 .violet {
     background-color: violet;
 }
-   
+
+/*Margins for cards*/
 div.bg.primary-1 {
-    margin: 10px;
+    margin: 2px;
 }
 
 div.bg.primary-2 {
-    margin: 10px;
+    margin: 2px;
 }
 
 div.bg.primary-3 {
-    margin: 10px;
+    margin: 2px;
 }
 
 div.bg.primary-4 {
-    margin: 10px;
+    margin: 2px;
 }
 
 div.bg.primary-5 {
-    margin: 10px;
+    margin: 2px;
 }
 
 /*FOOTER*/
 footer {
-    display:block;
-    width: 50%;
+    display: block;
     margin: 0 auto;
     text-align: center;
+    width: 100%;
 }
 
