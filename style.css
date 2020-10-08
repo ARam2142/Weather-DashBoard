@@ -17,7 +17,6 @@ body {
     flex-direction: column;
 }
 
-
 .container-fluid {
     padding: 20px;
     flex: 1 0 auto;
@@ -28,15 +27,12 @@ body {
     font-size: 30px;
 }
 
-#forecast-title {
-    margin-left: 20px;
-}
-
 div.currentforcast {
     background-color: rgba(30, 69, 114, 0.336);
     
 }
 
+/*5 day forcast background color*/
 .card.forecast1{
     background-color: rgb(26, 79, 194);
 
